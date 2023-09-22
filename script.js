@@ -41,11 +41,10 @@ btnDown.addEventListener("click", arrowDown)
 
 btnTop.addEventListener("click", arrowUp);
 
-
+setInterval(arrowDown, 5000);
 
 
 function arrowUp(){
-  
   conta--;
   if(conta==-1){
     conta=4;
@@ -54,21 +53,17 @@ function arrowUp(){
 <p id="text" class="position-absolute "></p>`;
 document.getElementById("title").innerHTML=images[conta].title;
 document.getElementById("text").innerHTML=images[conta].text;
-  img[conta].classList.remove("d-none");
-  canva[conta].classList.add("d-none");
-  bordo[conta].style.border = "3px solid white";
 }
 
 function arrowDown(){
-  img[conta].classList.add("d-none");
-  canva[conta].classList.remove("d-none");
-  bordo[conta].style.border = "";()
-
+  
   conta++;
   if(conta==5){
     conta=0;
   }
-  img[conta].classList.remove("d-none");
-  canva[conta].classList.add("d-none");
-  bordo[conta].style.border = "3px solid white";
+  groupImages.innerHTML = `<img src="${images[conta].image}"> <h2 id="title" class="position-absolute"></h2>
+  <p id="text" class="position-absolute "></p>`;
+  document.getElementById("title").innerHTML=images[conta].title;
+  document.getElementById("text").innerHTML=images[conta].text;
+  
 }
