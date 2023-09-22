@@ -27,31 +27,42 @@ const images = [
     }
 ]
 
-groupImages.innerHTML = `<h2 id="title" class="position-absolute"></h2>
+let conta = 0;
+
+groupImages.innerHTML = `<img src="${images[0].image}"> <h2 id="title" class="position-absolute"></h2>
 <p id="text" class="position-absolute "></p>`;
 
-let conta = 0;
-for (let i = 0; i < images.length; i++) {
-  const image = images[i].image;
-  groupImages.innerHTML += `<img src="${image}" class="d-none">`;
-  document.getElementById('title').innerHTML=images[i].title;
-  document.getElementById('text').innerHTML=images[i].text;
+document.getElementById("title").innerHTML=images[0].title;
+document.getElementById("text").innerHTML=images[0].text;
+
+
+
+btnDown.addEventListener("click", arrowDown)
+
+btnTop.addEventListener("click", arrowUp);
+
+
+
+
+function arrowUp(){
+  
+  conta--;
+  if(conta==-1){
+    conta=4;
+  }
+  groupImages.innerHTML = `<img src="${images[conta].image}"> <h2 id="title" class="position-absolute"></h2>
+<p id="text" class="position-absolute "></p>`;
+document.getElementById("title").innerHTML=images[conta].title;
+document.getElementById("text").innerHTML=images[conta].text;
+  img[conta].classList.remove("d-none");
+  canva[conta].classList.add("d-none");
+  bordo[conta].style.border = "3px solid white";
 }
 
-let img = groupImages.getElementsByTagName("img");
-let canva = document.getElementsByClassName("black-canva");
-let bordo = document.getElementsByClassName("bordo");
-
-
-img[conta].classList.remove("d-none");
-canva[conta].classList.add("d-none");
-bordo[conta].style.border = "3px solid white";
-
-
-btnDown.addEventListener("click", function(){
+function arrowDown(){
   img[conta].classList.add("d-none");
   canva[conta].classList.remove("d-none");
-  bordo[conta].style.border = "";
+  bordo[conta].style.border = "";()
 
   conta++;
   if(conta==5){
@@ -60,21 +71,4 @@ btnDown.addEventListener("click", function(){
   img[conta].classList.remove("d-none");
   canva[conta].classList.add("d-none");
   bordo[conta].style.border = "3px solid white";
-
-})
-
-btnTop.addEventListener("click", function(){
-  img[conta].classList.add("d-none");
-  canva[conta].classList.remove("d-none");
-  bordo[conta].style.border = "";
-  conta--;
-  if(conta==-1){
-    conta=4;
-  }
-  img[conta].classList.remove("d-none");
-  canva[conta].classList.add("d-none");
-  bordo[conta].style.border = "3px solid white";
-
-
-})
-
+}
